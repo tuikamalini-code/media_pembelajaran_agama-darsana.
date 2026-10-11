@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DARSANA – Media Pembelajaran Interaktif</title>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBF6EA;--card:#fff;--ink:#2B1B3D;--mut:#6B5B7B;--pur:#4B2A7B;--pur2:#7B4FB8;--gold:#C79A2E;--gold2:#F1E3B5;--line:#E6DAB8;--ok:#2E7D4F;--no:#B3382C;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1B1228;--card:#291B3B;--ink:#F5EEDC;--mut:#B9A9CC;--pur:#C9A8F5;--pur2:#9C72D6;--gold:#E2B94B;--gold2:#3A2B52;--line:#4A3866}}
+:root[data-theme="dark"]{--bg:#1B1228;--card:#291B3B;--ink:#F5EEDC;--mut:#B9A9CC;--pur:#C9A8F5;--pur2:#9C72D6;--gold:#E2B94B;--gold2:#3A2B52;--line:#4A3866}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Nunito Sans",system-ui,sans-serif;min-height:100vh}
+h1,h2,h3{font-family:Marcellus,Georgia,serif;font-weight:400;color:var(--pur);line-height:1.2;margin:0 0 .5em}
+h2{font-size:clamp(1.6rem,4vw,2.2rem)}h3{font-size:1.2rem}
+#top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#top .brand{font-family:Marcellus,serif;color:var(--pur);margin-right:auto;letter-spacing:.08em}
+.nb{border:1px solid var(--gold);background:var(--card);color:var(--pur);border-radius:999px;padding:6px 14px;font:600 14px "Nunito Sans",sans-serif;cursor:pointer}
+.nb:hover:not(:disabled){background:var(--gold2)}.nb:disabled{opacity:.4;cursor:default}
+button:focus-visible,a:focus-visible{outline:3px solid var(--pur2);outline-offset:2px}
+#prog{height:5px;background:var(--gold2)}#prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pur2),var(--gold));transition:width .4s}
+main{max-width:920px;margin:0 auto;padding:28px 18px 60px}
+.page{animation:in .35s ease}@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.page{animation:none}#prog i{transition:none}}
+.orn{display:flex;align-items:center;gap:10px;color:var(--gold);margin:0 0 18px}.orn:before,.orn:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}.orn:after{transform:scaleX(-1)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.btn{border:0;background:var(--pur);color:#fff;border-radius:10px;padding:11px 22px;font:700 15px "Nunito Sans",sans-serif;cursor:pointer}
+:root[data-theme="dark"] .btn{color:#1B1228}
+.btn.g{background:transparent;color:var(--pur);border:1.5px solid var(--gold)}.btn:hover{filter:brightness(1.12)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero{text-align:center;padding:30px 0 10px}
+.hero h1{font-size:clamp(3rem,13vw,6.5rem);letter-spacing:.14em;margin:0;color:var(--pur)}
+.hero .sub{font-size:1.25rem;color:var(--gold);font-family:Marcellus,serif;margin:6px 0 18px}
+.hero .row{justify-content:center}
+.tag{display:inline-block;background:var(--gold2);border-radius:999px;padding:3px 14px;font-weight:700;font-size:.9rem;color:var(--pur)}
+.fig{font-size:.86rem;color:var(--mut)}
+dl{margin:0}dt{font-weight:700;color:var(--pur);margin-top:12px}dd{margin:2px 0 0}
+.map{position:relative;max-width:560px;aspect-ratio:1;margin:0 auto}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.map .c{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:26%;aspect-ratio:1;border-radius:50%;background:var(--pur);color:#fff;display:grid;place-items:center;font-family:Marcellus,serif;font-size:clamp(.8rem,3vw,1.25rem);text-align:center;border:3px solid var(--gold)}
+.map button{position:absolute;transform:translate(-50%,-50%);border:2px solid var(--gold);background:var(--card);color:var(--pur);font:700 clamp(.7rem,2.6vw,.95rem) "Nunito Sans";padding:10px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.map button:hover{background:var(--gold2)}
+table{width:100%;border-collapse:collapse;min-width:640px;font-size:.92rem}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:var(--pur);color:#fff}:root[data-theme="dark"] th{color:#1B1228}td:first-child{font-weight:700;color:var(--pur)}
+.sc{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--gold);background:var(--gold2)}
+.opt.ok{border-color:var(--ok);background:rgba(46,125,79,.14)}.opt.no{border-color:var(--no);background:rgba(179,56,44,.12)}
+.fb{margin-top:12px;padding:12px 14px;border-radius:10px;font-weight:600}.fb.ok{background:rgba(46,125,79,.14);color:var(--ok)}.fb.no{background:rgba(179,56,44,.12);color:var(--no)}
+:root[data-theme="dark"] .fb.ok{color:#7FD6A2}:root[data-theme="dark"] .fb.no{color:#F29A90}
+.big{font-family:Marcellus,serif;font-size:4.5rem;color:var(--pur);line-height:1}
+textarea{width:100%;min-height:70px;border:1.5px solid var(--line);border-radius:10px;padding:10px;font:inherit;background:var(--card);color:var(--ink);margin-top:8px}
+ol.n{padding-left:20px}ol.n li{margin:8px 0}
+.hide{display:none}
+.ill{width:118px;height:118px;flex:none}.ill .p{fill:var(--pur)}.ill .g{fill:var(--gold)}.ill .l{fill:var(--gold2)}.ill .gs{fill:none;stroke:var(--gold);stroke-width:3;stroke-linecap:round}.ill .ps{fill:none;stroke:var(--pur);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.dh{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:6px}.dh h2{margin:0}.dh .tag{margin-bottom:6px}
+.panel{background:linear-gradient(135deg,var(--gold2),var(--card));border:1px solid var(--line);border-radius:18px;padding:8px}
+.lot{display:block;margin:0 auto 6px;width:130px}
+.om{font-size:5rem;line-height:1.1;color:var(--gold);font-family:"Noto Sans Devanagari","Nirmala UI","Kohinoor Devanagari","Mangal",serif;width:112px;height:112px;margin:0 auto;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;background:var(--gold2)}
+.banner{display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap;margin:0 0 14px}.banner figure{margin:0;text-align:center}.banner figcaption{font-size:.82rem;color:var(--mut);max-width:200px}
+.bi{width:min(100%,230px);height:auto}.bi .p{fill:var(--pur)}.bi .g{fill:var(--gold)}.bi .l{fill:var(--gold2)}.bi .gs{fill:none;stroke:var(--gold);stroke-width:2.5;stroke-linecap:round}
+</style>
+</head>
+<body>
+<header id="top">
+  <span class="brand">DARSANA</span>
+  <button class="nb" id="bHome">Home</button>
+  <button class="nb" id="bBack">Back</button>
+  <button class="nb" id="bMap">Map</button>
+  <button class="nb" id="bMus" aria-pressed="false">🎵 Musik</button>
+  <button class="nb" id="bNext">Next</button>
+</header>
+<div id="prog"><i></i></div>
+<main id="app"></main>
+
+<script>
+const $=s=>document.querySelector(s);
+const orn='<div class="orn" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 1l3 8-3 8-3-8z" fill="currentColor"/><path d="M1 9l8-3 8 3-8 3z" fill="none" stroke="currentColor"/></svg></div>';
+
+/* ---------- DATA ---------- */
+const D={
+nyaya:{n:"NYAYA",t:"Rsi Gautama (Aksapada Gautama)",p:"Sistem filsafat yang memberikan perhatian besar terhadap logika, penalaran, dan pengetahuan yang benar.",f:["Berpikir logis","Menganalisis informasi","Membedakan pengetahuan yang benar dan keliru","Menarik kesimpulan berdasarkan alasan yang tepat"],a:"Memeriksa sumber, bukti, dan alasan sebelum mempercayai informasi di media sosial.",i:"⚖"},
+vaiseshika:{n:"VAISESHIKA",t:"Rsi Kanada",p:"Sistem filsafat yang memberikan perhatian terhadap hakikat realitas dan berbagai kategori dalam realitas.",f:["Memahami realitas","Mengkategorikan realitas secara sistematis"],a:"Mengelompokkan dan mengidentifikasi objek atau fenomena secara sistematis.",i:"❖"},
+samkhya:{n:"SAMKHYA",t:"Rsi Kapila",p:"Sistem filsafat yang menjelaskan realitas melalui konsep Purusa dan Prakrti.",f:["Memahami perbedaan Purusa dan Prakrti"],k:[["Purusa","prinsip kesadaran"],["Prakrti","prinsip materi/alam"]],a:"Menyadari bahwa kehidupan tidak hanya berkaitan dengan aspek material, tetapi juga kesadaran.",i:"☯"},
+yoga:{n:"YOGA",t:"Rsi Patanjali",p:"Sistem filsafat yang menekankan disiplin dan pengendalian diri untuk mencapai keadaan spiritual yang lebih tinggi.",f:["Pengendalian pikiran","Konsentrasi","Meditasi","Disiplin diri"],a:"Mengatur pikiran, mengendalikan emosi, menjaga konsentrasi, refleksi, dan membangun kebiasaan disiplin.",i:"❀"},
+mimamsa:{n:"MIMAMSA",t:"Rsi Jaimini",p:"Sistem filsafat yang memberikan perhatian terhadap Weda, kewajiban, dan pelaksanaan tindakan keagamaan.",f:["Melaksanakan kewajiban berdasarkan prinsip dan ajaran"],a:"Bertanggung jawab dalam belajar, menghormati orang tua dan guru, serta menjalankan tugas dengan sungguh-sungguh.",i:"☸"},
+vedanta:{n:"VEDANTA",t:"Badarayana dan para pemikir Vedanta berikutnya",p:"Sistem filsafat yang memiliki hubungan erat dengan bagian akhir Weda, khususnya Upanisad.",f:["Realitas tertinggi","Atman","Brahman","Pembebasan"],a:"Melakukan refleksi mengenai hakikat diri, hubungan manusia dengan realitas tertinggi, dan tujuan kehidupan.",i:"✺"}
+};
+const ORDER=["nyaya","vaiseshika","samkhya","yoga","mimamsa","vedanta"];
+
+const CASES=[
+{h:"📱 A. Informasi Digital",s:"Seorang siswa menerima informasi di media sosial dan langsung membagikannya tanpa memeriksa kebenarannya.",q:"Darsana mana yang paling relevan?",c:"nyaya",e:"Nyaya menekankan logika dan pengetahuan yang benar: periksa sumber, bukti, dan alasan sebelum mempercayai atau membagikan informasi."},
+{h:"🧘 B. Pengendalian Diri",s:"Seorang siswa mudah marah ketika mendapatkan kritik.",q:"Darsana mana yang paling relevan untuk membantunya mengendalikan diri?",c:"yoga",e:"Yoga menekankan pengendalian pikiran dan disiplin diri. Siswa dapat belajar mengatur emosi, menjaga konsentrasi, dan melakukan refleksi sebelum menanggapi kritik."},
+{h:"⚖️ C. Pengambilan Keputusan",s:"Seorang siswa harus memilih antara mengikuti ajakan teman atau menyelesaikan tugas sekolah.",q:"Nilai Darsana mana yang dapat digunakan? Keputusan yang sebaiknya diambil: menyelesaikan tugas sekolah.",c:"mimamsa",e:"Mimamsa menekankan pelaksanaan kewajiban. Siswa sebaiknya menyelesaikan tugas sekolah lebih dulu sebagai bentuk tanggung jawab, lalu bergaul dengan teman setelahnya."}
+];
+
+const QZ=[
+["Secara makna, kata Darsana berkaitan dengan…","melihat atau pandangan",["menghitung","menyanyi","menghafal","menulis"]],
+["Sistem filsafat yang memberi perhatian besar pada logika, penalaran, dan pengetahuan yang benar adalah…","Nyaya",["Yoga","Mimamsa","Samkhya","Vedanta"]],
+["Tokoh Nyaya adalah…","Rsi Gautama",["Rsi Kanada","Rsi Kapila","Rsi Jaimini","Rsi Patanjali"]],
+["Darsana yang memperhatikan hakikat realitas dan kategori dalam realitas adalah…","Vaiseshika",["Nyaya","Yoga","Vedanta","Mimamsa"]],
+["Tokoh Vaiseshika adalah…","Rsi Kanada",["Rsi Patanjali","Rsi Gautama","Badarayana","Rsi Kapila"]],
+["Dalam Samkhya, Purusa adalah…","prinsip kesadaran",["prinsip materi/alam","disiplin diri","kewajiban keagamaan","logika dan penalaran"]],
+["Dalam Samkhya, Prakrti adalah…","prinsip materi/alam",["prinsip kesadaran","konsentrasi","realitas tertinggi","pembebasan"]],
+["Darsana yang menekankan disiplin, pengendalian diri, dan meditasi, dengan tokoh Rsi Patanjali, adalah…","Yoga",["Nyaya","Mimamsa","Vaiseshika","Vedanta"]],
+["Darsana yang berfokus pada Weda, kewajiban, dan tindakan keagamaan, dengan tokoh Rsi Jaimini, adalah…","Mimamsa",["Samkhya","Vedanta","Nyaya","Yoga"]],
+["Darsana yang berhubungan erat dengan Upanisad dan membahas Atman, Brahman, serta pembebasan adalah…","Vedanta",["Yoga","Vaiseshika","Mimamsa","Nyaya"]],
+["Memeriksa sumber dan bukti sebelum membagikan informasi di media sosial paling sesuai dengan Darsana…","Nyaya",["Samkhya","Mimamsa","Vedanta","Yoga"]],
+["Mengelompokkan dan mengidentifikasi objek atau fenomena secara sistematis merupakan penerapan Darsana…","Vaiseshika",["Yoga","Samkhya","Mimamsa","Nyaya"]]
+];
+let Q=[],qi=0,score=0,wrong=0,answered=false;
+
+/* ---------- PAGES ---------- */
+const eye='<svg viewBox="0 0 220 120" width="220" aria-label="Ilustrasi mata sebagai simbol pandangan" role="img"><path d="M10 60Q110 -10 210 60Q110 130 10 60Z" fill="none" stroke="#C79A2E" stroke-width="3"/><circle cx="110" cy="60" r="32" fill="#4B2A7B"/><circle cx="110" cy="60" r="14" fill="#F1E3B5"/><circle cx="120" cy="50" r="5" fill="#fff"/><g stroke="#C79A2E" stroke-width="2"><path d="M110 4v14M55 16l8 11M165 16l-8 11"/></g></svg>';
+
+const S=(b)=>`<svg class="ill" viewBox="0 0 120 120" role="img" aria-hidden="true">${b}</svg>`;
+const ILL={
+nyaya:S('<circle class="l" cx="52" cy="52" r="32"/><circle class="gs" cx="52" cy="52" r="32"/><path class="gs" stroke-width="7" d="M76 76l28 28"/><path class="ps" d="M37 52l10 11 19-22"/>'),
+vaiseshika:S('<circle class="p" cx="34" cy="34" r="15"/><rect class="g" x="68" y="19" width="30" height="30" rx="4"/><polygon class="g" points="34,68 16,100 52,100"/><polygon class="p" points="83,68 100,78 100,98 83,108 66,98 66,78"/>'),
+samkhya:S('<circle class="l" cx="42" cy="60" r="32"/><circle class="gs" cx="78" cy="60" r="32"/><circle class="g" cx="34" cy="60" r="8"/><path class="p" d="M88 80q-17-18 0-40q17 22 0 40z"/><path class="gs" d="M42 28a32 32 0 0 1 0 64"/>'),
+yoga:S('<circle class="gs" cx="60" cy="34" r="28" opacity=".55"/><circle class="p" cx="60" cy="34" r="12"/><path class="p" d="M60 48L40 86h40z"/><ellipse class="g" cx="60" cy="92" rx="38" ry="11"/><path class="gs" d="M20 112h80"/>'),
+mimamsa:S('<path class="g" d="M60 4q16 15 0 30q-16-15 0-30z"/><path class="l" d="M10 46q25-10 50 2q25-12 50-2v50q-25-10-50 2q-25-12-50-2z"/><path class="ps" d="M10 46q25-10 50 2q25-12 50-2v50q-25-10-50 2q-25-12-50-2zM60 48v50"/><path class="gs" d="M24 62q14-4 26 2M24 76q14-4 26 2M70 64q12-6 26-2M70 78q12-6 26-2"/>'),
+vedanta:S('<circle class="gs" cx="60" cy="60" r="40"/><circle class="ps" cx="60" cy="60" r="26"/><circle class="l" cx="60" cy="60" r="14"/><circle class="p" cx="60" cy="60" r="6"/><path class="gs" d="M60 4v8M60 108v8M4 60h8M108 60h8M20 20l6 6M100 20l-6 6M20 100l6-6M100 100l-6-6"/>')
+};
+const LOTUS='<svg class="lot" viewBox="0 0 130 90" aria-hidden="true"><g transform="translate(65 82)"><ellipse class="g" cx="-44" cy="-14" rx="11" ry="30" transform="rotate(-62 -44 -14)" fill="var(--gold)"/><ellipse cx="44" cy="-14" rx="11" ry="30" transform="rotate(62 44 -14)" fill="var(--gold)"/><ellipse cx="-24" cy="-26" rx="12" ry="34" transform="rotate(-30 -24 -26)" fill="var(--pur2)"/><ellipse cx="24" cy="-26" rx="12" ry="34" transform="rotate(30 24 -26)" fill="var(--pur2)"/><ellipse cx="0" cy="-34" rx="13" ry="38" fill="var(--pur)"/></g><path d="M8 84h114" stroke="var(--gold)" stroke-width="2"/></svg>';
+const GATE='<svg class="bi" viewBox="0 0 200 120" role="img" aria-label="Ilustrasi candi bentar, gerbang pura"><path class="p" d="M14 108V74h12V58h12V44h12V30h12V16h8v92z"/><path class="p" d="M186 108V74h-12V58h-12V44h-12V30h-12V16h-8v92z"/><path class="gs" d="M14 74h12M26 58h12M38 44h12M50 30h12M186 74h-12M174 58h-12M162 44h-12M150 30h-12"/><path class="l" d="M72 108V92h56v16zM82 92V80h36v12z"/><circle class="g" cx="100" cy="36" r="9"/><path class="gs" d="M100 20v-8M86 26l-5-5M114 26l5-5M4 108h192"/></svg>';
+const CANANG='<svg class="bi" viewBox="0 0 120 120" role="img" aria-label="Ilustrasi canang sari, persembahan"><rect class="l" x="14" y="62" width="92" height="40" rx="8"/><path class="gs" d="M14 62h92v40H14zM28 62v40M44 62v40M60 62v40M76 62v40M92 62v40"/><ellipse class="g" cx="60" cy="52" rx="46" ry="12" opacity=".55"/><ellipse cx="60" cy="26" rx="9" ry="14" fill="#3B5BA5"/><ellipse cx="86" cy="50" rx="14" ry="9" fill="#C0392B"/><ellipse cx="60" cy="68" rx="9" ry="0.1" fill="#fff"/><ellipse cx="34" cy="50" rx="14" ry="9" fill="#E8B923"/><ellipse cx="60" cy="74" rx="9" ry="0.1" fill="#fff"/><ellipse cx="60" cy="64" rx="9" ry="12" fill="#fff" stroke="#C79A2E" stroke-width="1.5"/><circle class="p" cx="60" cy="44" r="6"/><path class="gs" d="M60 38V16"/></svg>';
+function dar(id){const d=D[id];
+return `<div class="dh"><div class="panel">${ILL[id]}</div><div><span class="tag">${d.i} Sad Darsana</span><h2>${d.n}</h2></div></div>${orn}
+<div class="grid"><div class="card"><h3>Pengertian</h3><p>${d.p}</p>${d.k?'<dl>'+d.k.map(x=>`<dt>${x[0]}</dt><dd>= ${x[1]}</dd>`).join('')+'</dl>':''}</div>
+<div class="card"><h3>Tokoh</h3><p>${d.t}</p></div>
+<div class="card"><h3>Fokus</h3><ul>${d.f.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+<div class="card" style="border-color:var(--gold)"><h3>Penerapan</h3><p>${d.a}</p></div></div>`}
+
+const PAGES=[
+{id:"home",t:"Beranda",h:()=>`<div class="hero"><div class="om" aria-label="Simbol Om">ॐ</div><h1>DARSANA</h1><p class="sub">Melihat Kehidupan dengan Lebih Sadar</p><p><b>Media Pembelajaran Interaktif</b></p><p><span class="tag">Kelas XI / Fase F</span></p><p class="fig">Klik di mana saja atau tombol Musik untuk memutar musik latar.</p>${orn}<div class="row"><button class="btn" data-go="peta0">MULAI</button><button class="btn g" data-go="petunjuk">PETUNJUK</button><button class="btn g" data-go="tujuan">TUJUAN</button></div></div>`},
+{id:"petunjuk",t:"Petunjuk",h:()=>`<h2>Petunjuk Penggunaan</h2>${orn}<div class="card"><ol class="n"><li>Klik tombol untuk berpindah halaman.</li><li>Pelajari materi secara berurutan.</li><li>Kerjakan aktivitas dan kuis.</li><li>Perhatikan skor dan feedback.</li><li>Lakukan refleksi setelah menyelesaikan pembelajaran.</li></ol><p class="fig">Tombol Home, Back, Next, dan Map selalu ada di bagian atas layar.</p></div><div class="row"><button class="btn g" data-go="prev">KEMBALI</button><button class="btn" data-go="next">LANJUT</button></div>`},
+{id:"tujuan",t:"Tujuan Pembelajaran",h:()=>`<div class="banner"><figure>${GATE}<figcaption>Candi bentar, gerbang pura di Bali</figcaption></figure></div><h2>Tujuan Pembelajaran</h2>${orn}<div class="grid">${[["👁","Menjelaskan pengertian Darsana."],["🎯","Menjelaskan tujuan mempelajari Darsana."],["🪷","Mengenal enam sistem filsafat Hindu atau Sad Darsana."],["🌿","Menghubungkan pemikiran Darsana dengan kehidupan sehari-hari."],["💡","Mengembangkan kemampuan berpikir kritis melalui aktivitas dan kuis."]].map(x=>`<div class="card"><div style="font-size:1.8rem">${x[0]}</div><p style="margin:6px 0 0">${x[1]}</p></div>`).join('')}</div><div class="row"><button class="btn g" data-go="prev">KEMBALI</button><button class="btn" data-go="next">LANJUT</button></div>`},
+{id:"apa",t:"Apa itu Darsana?",h:()=>`<h2>Apa itu Darsana?</h2>${orn}<div class="grid"><div class="card" style="text-align:center;color:var(--gold)">${eye}<p class="fig" style="color:var(--mut)">Darsana: cara manusia memandang kehidupan.</p></div><div class="card"><p>Darsana merupakan sistem pemikiran atau filsafat yang berusaha memahami <b>hakikat kehidupan, pengetahuan, kebenaran, dan tujuan manusia</b>.</p><p>Kata Darsana berkaitan dengan makna <b>“melihat”</b> atau <b>“pandangan”</b>.</p><p>Ada enam sistem pandangan yang disebut <b>Sad Darsana</b>. Klik Next untuk membuka petanya.</p></div></div><div class="row"><button class="btn g" data-go="prev">KEMBALI</button><button class="btn" data-go="next">LANJUT</button></div>`},
+{id:"peta0",t:"Peta Sad Darsana",h:()=>{const pos=[[50,10],[88,30],[88,72],[50,92],[12,72],[12,30]];
+return `<h2>Peta Sad Darsana</h2>${orn}<p style="text-align:center">Klik salah satu nama untuk membuka materinya.</p><div class="map"><svg viewBox="0 0 100 100" aria-hidden="true">${pos.map(p=>`<line x1="50" y1="50" x2="${p[0]}" y2="${p[1]}" stroke="#C79A2E" stroke-width=".6" stroke-dasharray="2 1.5"/>`).join('')}</svg><div class="c">SAD<br>DARSANA</div>${ORDER.map((id,i)=>`<button style="left:${pos[i][0]}%;top:${pos[i][1]}%" data-go="${id}">${D[id].n}</button>`).join('')}</div>`}},
+...ORDER.map(id=>({id,t:D[id].n,h:()=>dar(id)+`<div class="row"><button class="btn g" data-go="peta0">PETA</button><button class="btn g" data-go="prev">KEMBALI</button><button class="btn" data-go="next">LANJUT</button></div>`})),
+{id:"hidup",t:"Darsana dalam Kehidupan",h:()=>`<h2>Darsana dalam Kehidupan</h2>${orn}<p>Baca tiga kasus berikut, lalu pilih Darsana yang paling relevan.</p>${CASES.map((c,i)=>`<div class="card" style="margin-bottom:14px" data-case="${i}"><h3>${c.h}</h3><p>${c.s}</p><p><b>${c.q}</b></p>${ORDER.map(id=>`<button class="opt" data-pick="${id}">${D[id].n}</button>`).join('')}<label class="fig">Tulis alasanmu (opsional):<textarea></textarea></label><div class="fb hide"></div></div>`).join('')}<div class="row"><button class="btn g" data-go="prev">KEMBALI</button><button class="btn" data-go="next">LANJUT</button></div>`},
+{id:"info",t:"Infografis Perbandingan",h:()=>{const r=[["Nyaya","Rsi Gautama","Logika dan penalaran","Pengetahuan benar","Berpikir kritis"],["Vaiseshika","Rsi Kanada","Realitas","Kategori realitas","Mengelompokkan fenomena"],["Samkhya","Rsi Kapila","Realitas","Purusa dan Prakrti","Kesadaran diri"],["Yoga","Rsi Patanjali","Pengendalian diri","Disiplin dan konsentrasi","Mengendalikan pikiran/emosi"],["Mimamsa","Rsi Jaimini","Weda dan kewajiban","Pelaksanaan kewajiban","Bertanggung jawab"],["Vedanta","Badarayana dan pemikir Vedanta","Realitas tertinggi","Atman, Brahman, pembebasan","Refleksi diri"]];
+return `<h2>Infografis Perbandingan</h2>${orn}<div class="sc"><table><thead><tr><th>Darsana</th><th>Tokoh</th><th>Fokus</th><th>Konsep Utama</th><th>Penerapan</th></tr></thead><tbody>${r.map(x=>'<tr>'+x.map(c=>`<td>${c}</td>`).join('')+'</tr>').join('')}</tbody></table></div><div class="row"><button class="btn g" data-go="prev">KEMBALI</button><button class="btn" data-go="next">LANJUT</button></div>`}},
+{id:"quiz",t:"Final Quest",h:()=>{if(qi>=Q.length)return "";const q=Q[qi];
+return `${LOTUS}<h2 style="text-align:center">Final Quest</h2>${orn}<div class="card"><p class="fig">Soal ${qi+1} dari ${Q.length}</p><h3 style="font-family:'Nunito Sans';color:var(--ink);font-size:1.1rem;font-weight:700">${q.q}</h3><div id="opts">${q.o.map((t,i)=>`<button class="opt" data-ans="${i}"><b>${"ABCDE"[i]}.</b> ${t}</button>`).join('')}</div><div class="fb hide" id="qfb"></div><div class="row"><button class="btn hide" id="qnext">${qi===Q.length-1?"LIHAT SKOR":"SOAL BERIKUTNYA"}</button></div></div>`}},
+{id:"skor",t:"Skor",h:()=>{const tot=Q.length,pct=Math.round(score/tot*100);const m=pct>=90?"Luar biasa! Kamu sangat memahami Darsana.":pct>=75?"Bagus! Pemahamanmu sudah baik.":pct>=60?"Cukup baik, tetapi masih perlu belajar kembali.":"Yuk pelajari kembali materi Darsana.";
+return `${LOTUS}<h2 style="text-align:center">Skor Akhir</h2>${orn}<div class="card" style="text-align:center"><div class="big">${pct}%</div><p style="font-size:1.15rem"><b>${m}</b></p><div class="grid" style="margin-top:12px"><div class="card"><b style="color:var(--ok);font-size:1.6rem">${score}</b><br>Jawaban benar</div><div class="card"><b style="color:var(--no);font-size:1.6rem">${wrong}</b><br>Jawaban salah</div></div><div class="row" style="justify-content:center"><button class="btn g" data-go="retry">COBA LAGI</button><button class="btn" data-go="next">LANJUT</button></div></div>`}},
+{id:"kesimpulan",t:"Kesimpulan",h:()=>`<div class="banner"><figure>${CANANG}<figcaption>Canang sari, persembahan harian umat Hindu di Bali</figcaption></figure><figure><div class="om" aria-label="Simbol Om">ॐ</div><figcaption>Om, simbol suci dalam agama Hindu</figcaption></figure></div><h2>Kesimpulan</h2>${orn}<div class="card"><p>Darsana mengajarkan manusia untuk <b>melihat kehidupan secara lebih sadar</b>:</p><ul><li>berpikir kritis,</li><li>memahami realitas,</li><li>mengendalikan diri,</li><li>menjalankan kewajiban, dan</li><li>melakukan refleksi terhadap kehidupan.</li></ul></div><div class="row"><button class="btn g" data-go="prev">KEMBALI</button><button class="btn" data-go="next">LANJUT</button></div>`},
+{id:"refleksi",t:"Refleksi",h:()=>`<h2>Refleksi</h2>${orn}<p>Jawab dengan jujur. Jawabanmu tidak dinilai dan hanya tampil di layar ini.</p>${["Apa pengetahuan baru yang saya peroleh?","Darsana mana yang paling menarik bagi saya? Mengapa?","Apa hubungan Darsana dengan kehidupan saya?","Apa nilai Darsana yang akan saya terapkan dalam kehidupan?","Bagaimana teknologi membantu saya memahami Darsana?"].map((x,i)=>`<div class="card" style="margin-bottom:12px"><b>${i+1}. ${x}</b><textarea aria-label="${x}"></textarea></div>`).join('')}<div class="row"><button class="btn g" data-go="prev">KEMBALI</button><button class="btn" data-go="next">LANJUT</button></div>`},
+{id:"sumber",t:"Sumber",h:()=>`<h2>Sumber Informasi</h2>${orn}<div class="card"><ul><li>LKPD Darsana Kelas XI (Fase F) – materi acuan utama.</li><li>Buku Pendidikan Agama Hindu dan Budi Pekerti untuk SMA/SMK Kelas XI (Fase F), Kementerian Pendidikan dan Kebudayaan.</li></ul><p class="fig">Guru dapat menambahkan atau menyesuaikan daftar sumber sesuai bahan ajar yang digunakan.</p></div><div class="row"><button class="btn g" data-go="prev">KEMBALI</button><button class="btn" data-go="home">KE BERANDA</button></div>`}
+];
+
+/* ---------- ENGINE ---------- */
+let cur=0;
+const idx=id=>PAGES.findIndex(p=>p.id===id);
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function resetQuiz(){Q=shuffle(QZ).map(x=>{const o=shuffle([x[1],...x[2]]);return{q:x[0],o,c:o.indexOf(x[1])}});qi=0;score=0;wrong=0;answered=false}
+function quizDone(){return qi>=Q.length}
+function go(id){
+  if(id==="next")id=PAGES[Math.min(cur+1,PAGES.length-1)].id;
+  if(id==="prev")id=PAGES[Math.max(cur-1,0)].id;
+  if(id==="retry"){resetQuiz();id="quiz"}
+  if(id==="map")id="peta0";
+  let n=idx(id);if(n<0)return;
+  if(PAGES[cur].id==="quiz"&&!quizDone()&&n>cur&&PAGES[n].id!=="quiz"){alert("Selesaikan semua soal Final Quest terlebih dahulu.");return}
+  if(PAGES[n].id==="skor"&&!quizDone()){n=idx("quiz")}
+  if(PAGES[n].id==="quiz"&&quizDone()){resetQuiz()}
+  cur=n;render();window.scrollTo(0,0);
+}
+function render(){
+  const p=PAGES[cur];
+  $("#app").innerHTML=`<section class="page" aria-label="${p.t}">${p.h()}</section>`;
+  $("#prog i").style.width=(cur/(PAGES.length-1)*100)+"%";
+  $("#bBack").disabled=cur===0;$("#bNext").disabled=cur===PAGES.length-1;
+  $("#bHome").disabled=cur===0;
+  document.title="DARSANA – "+p.t+" ("+(cur+1)+"/"+PAGES.length+")";
+}
+document.addEventListener("click",e=>{
+  const g=e.target.closest("[data-go]");if(g){go(g.dataset.go);return}
+  const pk=e.target.closest("[data-pick]");
+  if(pk){const box=pk.closest("[data-case]"),c=CASES[box.dataset.case];if(box.dataset.done)return;box.dataset.done=1;
+    box.querySelectorAll(".opt").forEach(b=>{b.disabled=true;if(b.dataset.pick===c.c)b.classList.add("ok");else if(b===pk)b.classList.add("no")});
+    const f=box.querySelector(".fb"),ok=pk.dataset.pick===c.c;f.className="fb "+(ok?"ok":"no");
+    f.textContent=(ok?"BENAR! ":"BELUM TEPAT. ")+"Darsana yang paling relevan: "+D[c.c].n+". "+c.e;return}
+  const an=e.target.closest("[data-ans]");
+  if(an&&!answered){answered=true;const q=Q[qi],i=+an.dataset.ans,ok=i===q.c;
+    document.querySelectorAll("#opts .opt").forEach((b,k)=>{b.disabled=true;if(k===q.c)b.classList.add("ok");else if(k===i)b.classList.add("no")});
+    ok?score++:wrong++;
+    const f=$("#qfb");f.className="fb "+(ok?"ok":"no");f.textContent=ok?"BENAR! Pemahamanmu tepat.":"BELUM TEPAT. Coba pelajari kembali materi.";
+    $("#qnext").classList.remove("hide");return}
+  if(e.target.id==="qnext"){qi++;answered=false;if(quizDone())go("skor");else render()}
+});
+$("#bHome").onclick=()=>go("home");$("#bBack").onclick=()=>go("prev");$("#bNext").onclick=()=>go("next");$("#bMap").onclick=()=>go("map");
+/* ---------- MUSIK LATAR (Web Audio, 8 nada pentatonik D) ---------- */
+const NOTES=[293.66,329.63,369.99,440,493.88,587.33,659.25,739.99];
+const SEQ=[0,2,4,3,5,4,2,-1, 1,3,5,4,6,5,3,-1, 2,4,6,5,7,6,4,5, 3,2,1,0,2,1,0,-1];
+let AC,master,timer,step=0,nextT=0,musOn=false,musInit=false;
+function bell(f,t,v){const o=AC.createOscillator(),o2=AC.createOscillator(),g=AC.createGain(),g2=AC.createGain();o.type=o2.type="sine";o.frequency.value=f;o2.frequency.value=f*2.01;g2.gain.value=.22;o.connect(g);o2.connect(g2);g2.connect(g);g.connect(master);g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(v,t+.03);g.gain.exponentialRampToValueAtTime(.0001,t+2.4);o.start(t);o2.start(t);o.stop(t+2.5);o2.stop(t+2.5)}
+function pad(f,t,d){const o=AC.createOscillator(),g=AC.createGain();o.type="triangle";o.frequency.value=f;o.connect(g);g.connect(master);g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(.035,t+1.6);g.gain.linearRampToValueAtTime(.0001,t+d);o.start(t);o.stop(t+d+.1)}
+function sched(){while(nextT<AC.currentTime+.6){const n=SEQ[step%SEQ.length];if(n>=0)bell(NOTES[n],nextT,step%4===0?.11:.075);if(step%8===0){pad(146.83,nextT,5);pad(220,nextT,5)}nextT+=.62;step++}}
+function musLabel(){const b=$("#bMus");b.textContent=musOn?"🔊 Musik":"🔇 Musik";b.setAttribute("aria-pressed",musOn)}
+function musPlay(on){
+  try{
+    if(on){if(!AC){AC=new (window.AudioContext||window.webkitAudioContext)();master=AC.createGain();master.gain.value=.9;master.connect(AC.destination)}
+      AC.resume();nextT=AC.currentTime+.1;clearInterval(timer);timer=setInterval(sched,200);master.gain.setTargetAtTime(.9,AC.currentTime,.3)}
+    else if(AC){master.gain.setTargetAtTime(0,AC.currentTime,.3);setTimeout(()=>{if(!musOn){clearInterval(timer);AC.suspend()}},900)}
+    musOn=on;
+  }catch(e){musOn=false}
+  musLabel();
+}
+$("#bMus").onclick=()=>{musInit=true;musPlay(!musOn)};
+document.addEventListener("pointerdown",e=>{if(!musInit&&!e.target.closest("#bMus")){musInit=true;musPlay(true)}},{once:false});
+document.addEventListener("visibilitychange",()=>{if(!musOn||!AC)return;if(document.hidden)AC.suspend();else AC.resume()});
+resetQuiz();render();
+</script>
+</body>
+</html>
